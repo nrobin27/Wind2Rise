@@ -1,119 +1,343 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wind2Rise Oy</title>
-    <style>
-        :root {
-            --bg-color: #0f1115;
-            --text-color: #ffffff;
-            --muted-color: #748094;
-            --accent-color: #00a8ff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wind2Rise Oy</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            justify-content: space-between;
-            padding: 3rem 2rem;
-        }
+<style>
+:root{
+    --primary:#0b2d3a;
+    --secondary:#1c6e8c;
+    --accent:#3fb8af;
+    --light:#f7fafb;
+    --text:#1b1b1b;
+    --gray:#6b7280;
+    --max-width:1200px;
+}
 
-        header {
-            max-width: 1000px;
-            width: 100%;
-            margin: 0 auto;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        .logo span {
-            color: var(--accent-color);
-        }
+body{
+    font-family:'Inter',sans-serif;
+    color:var(--text);
+    line-height:1.7;
+    background:white;
+}
 
-        main {
-            max-width: 1000px;
-            width: 100%;
-            margin: auto auto;
-        }
+.container{
+    width:90%;
+    max-width:var(--max-width);
+    margin:auto;
+}
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
+/* Header */
 
-        p {
-            font-size: 1.15rem;
-            color: var(--muted-color);
-            max-width: 500px;
-            margin-bottom: 2.5rem;
-        }
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(0,0,0,0.05);
+}
 
-        .contact-link {
-            font-size: 1.25rem;
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 4px;
-            transition: color 0.2s ease, border-color 0.2s ease;
-        }
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+}
 
-        .contact-link:hover {
-            color: var(--accent-color);
-        }
+.logo{
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--primary);
+    letter-spacing:-0.5px;
+}
 
-        footer {
-            max-width: 1000px;
-            width: 100%;
-            margin: 0 auto;
-            font-size: 0.85rem;
-            color: var(--muted-color);
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid #1e242f;
-            padding-top: 2rem;
-        }
+.nav-links{
+    display:flex;
+    gap:30px;
+}
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            footer { flex-direction: column; gap: 1rem; }
-        }
-    </style>
+.nav-links a{
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:500;
+}
+
+/* Hero */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background:
+    linear-gradient(rgba(11,45,58,.65), rgba(11,45,58,.65)),
+    url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1800&q=80');
+    background-size:cover;
+    background-position:center;
+    color:white;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero h1{
+    font-size:clamp(2.8rem,6vw,5rem);
+    line-height:1.05;
+    margin-bottom:25px;
+    font-weight:700;
+}
+
+.hero p{
+    font-size:1.2rem;
+    margin-bottom:35px;
+    opacity:.95;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 28px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    background:white;
+    color:var(--primary);
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+/* Sections */
+
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    font-size:2.4rem;
+    color:var(--primary);
+    margin-bottom:20px;
+}
+
+.section-text{
+    max-width:850px;
+    color:var(--gray);
+    font-size:1.05rem;
+}
+
+/* Cards */
+
+.grid{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 8px 30px rgba(0,0,0,.07);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card h3{
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+.card p{
+    color:var(--gray);
+}
+
+/* About */
+
+.about{
+    background:var(--light);
+}
+
+/* Contact */
+
+.contact{
+    text-align:center;
+}
+
+.contact-box{
+    margin-top:40px;
+    padding:50px;
+    border-radius:20px;
+    background:var(--primary);
+    color:white;
+}
+
+.contact-box a{
+    color:white;
+    text-decoration:none;
+    font-size:1.2rem;
+    font-weight:600;
+}
+
+/* Footer */
+
+footer{
+    padding:40px 0;
+    text-align:center;
+    border-top:1px solid #eee;
+    color:var(--gray);
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .nav-links{
+        gap:18px;
+        font-size:.9rem;
+    }
+
+    .hero{
+        text-align:center;
+    }
+
+    .hero-content{
+        margin:auto;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <div class="logo">Wind2Rise<span>.</span></div>
-    </header>
+<header>
+    <div class="container nav">
+        <div class="logo">Wind2Rise Oy</div>
 
-    <main>
-        <h1>Industrial & Technical Solutions.</h1>
-        <p>Providing professional consultation, machinery procurement, and operational support services.</p>
-        <a href="mailto:info@wind2rise.fi" class="contact-link">info@wind2rise.fi</a>
-    </main>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</header>
 
-    <footer>
-        <div>Wind2Rise Oy</div>
-        <div>&copy; 2026 Wind2Rise Oy. All rights reserved.</div>
-    </footer>
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Driving Sustainable Growth Through Innovation</h1>
+
+            <p>
+                Wind2Rise Oy supports businesses and projects that create
+                long-term value through innovation, sustainability,
+                and responsible development.
+            </p>
+
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title">About Wind2Rise Oy</h2>
+
+        <p class="section-text">
+            Wind2Rise Oy is focused on helping organizations grow,
+            transform, and succeed in a rapidly evolving world.
+            Our approach combines strategic thinking, practical
+            execution, and a commitment to sustainable value creation.
+        </p>
+    </div>
+</section>
+
+<section id="services">
+    <div class="container">
+        <h2 class="section-title">What We Do</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Business Development</h3>
+                <p>
+                    Supporting growth initiatives, market expansion,
+                    and long-term business opportunities.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Strategic Advisory</h3>
+                <p>
+                    Providing guidance for organizations navigating
+                    change, innovation, and future planning.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Sustainability Focus</h3>
+                <p>
+                    Helping projects align with responsible and
+                    sustainable development principles.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <div class="container">
+
+        <h2 class="section-title">Contact</h2>
+
+        <p class="section-text" style="margin:auto;">
+            We welcome discussions about collaboration,
+            partnerships, and new opportunities.
+        </p>
+
+        <div class="contact-box">
+            <h3 style="margin-bottom:20px;">Wind2Rise Oy</h3>
+
+            <p style="margin-bottom:15px;">
+                Email:
+            </p>
+
+            <a href="mailto:info@wind2rise.fi">
+                info@wind2rise.fi
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        © 2026 Wind2Rise Oy. All rights reserved.
+    </div>
+</footer>
 
 </body>
 </html>
+```
